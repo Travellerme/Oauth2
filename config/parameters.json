@@ -1,0 +1,21 @@
+{
+  "default":{
+      "client":{
+          "name":"web api v1",
+          "clientId":"1_31y1ntqa27cw4g44o04sckcww44w0gsw804wco0kkgwkcoog40",
+          "clientSecret":"1gaizro7v45c4woss4k4s8cwgw0cwk4gk4og8cg8ws8owg8c0c"
+      },
+      "api": {
+        "version" : "v1"
+       }
+  },
+  "session": {
+    "secret": ":LOnjsdkjfy",
+    "key": "sid",
+    "cookie": {
+      "path": "/",
+      "httpOnly": true,
+      "maxAge": null
+    }
+  }
+}

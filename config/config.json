@@ -1,0 +1,27 @@
+{
+  "port": 8080,
+  "host": "localhost",
+  "security": {
+    "tokenLife" : 3600,
+    "iterations" : 10
+  },
+  "mongoose": {
+    "driver": "mongodb",
+    "host": "localhost",
+    "db": "auth_test",
+    "options": {
+      "server": {
+        "socketOptions": {
+          "keepAlive": 1
+        }
+      }
+    }
+  },
+  "pg": {
+    "host": "127.0.0.1",
+    "db": "postgres",
+    "username": "postgres",
+    "port": "5432",
+    "password": ""
+  }
+}
