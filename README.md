@@ -25,6 +25,7 @@ In that way, main server will not have high load during login.
 
 Request examples:
 POST/GET  /oauth/token
+<pre>
 client-password
 {
     "grant_type":"password",
@@ -46,4 +47,5 @@ refresh-token
     "client_secret":"dfjhvsbh3jh21d",
     "refresh_token":"40436a49bdbc5f5c2c0e383756b8863de4854ce7712523e220e4fd4df98beaf6"
 }
+</pre>
 Also you can send request to /metric/registration with access_token for writing metric registration info
