@@ -43,8 +43,8 @@ client_credentials
 refresh-token
 {
     "grant_type":"refresh_token",
-    "client_id":"azubu_desktop",
-    "client_secret":"dfjhvsbh3jh21d",
+    "client_id":"1_31y1ntqa27cw4g44o04sckcww44w0gsw804wco0kkgwkcoog40",
+    "client_secret":"1gaizro7v45c4woss4k4s8cwgw0cwk4gk4og8cg8ws8owg8c0c",
     "refresh_token":"40436a49bdbc5f5c2c0e383756b8863de4854ce7712523e220e4fd4df98beaf6"
 }
 </pre>
