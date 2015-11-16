@@ -1,20 +1,35 @@
 {
-  "port": 8080,
+  "portOrSocket": "8080",
+  "grantsSocketFile":"660",
   "host": "localhost",
   "security": {
-    "tokenLife" : 3600,
+    "tokenLife" : 2505600,
     "iterations" : 10
-  },
+  },  
   "mongoose": {
     "driver": "mongodb",
     "host": "localhost",
-    "db": "auth_test",
+    "port": "27017",
+    "user":"",
+    "password":"",
+    "replica":[],
+    "db": "azubu",
     "options": {
-      "server": {
-        "socketOptions": {
-          "keepAlive": 1
+        "server": {
+            "auto_reconnect":true,
+            "poolSize": 5,
+            "socketOptions": {
+              "keepAlive": 1
+            }
+	},
+        "replset": {
+            "auto_reconnect":false,
+            "poolSize": 10,
+            "socketOptions": {
+              "keepAlive": 1,
+              "connectTimeoutMS": 30000
+            }
         }
-      }
     }
   },
   "pg": {

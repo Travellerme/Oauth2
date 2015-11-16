@@ -24,6 +24,7 @@ function AuthError(status,message) {
   
   this.status = status || 401;
   this.message = message;
+
 }
 
 util.inherits(AuthError, Error);
@@ -33,5 +34,16 @@ AuthError.prototype.name = 'AuthError';
 exports.AuthError = AuthError;
 exports.messages = {
   authError:"Invalid username and password combination",
-  tokenExpired:"Token expired"
+  tokenExpired:"Token expired",
+  accessDenied:"Access is denied",
+  missingOauthParams:'Missing parameters. "username" and "password" required',
+  missingOauthUserIdParams:'Missing parameters. "userId" required',
+  clientNotFound:"Client for this token has not found",
+  socialServiceAccessDenied:"Social service access is denied",
+  invalidSocialService:"Invalid parameter, Invalid type of social service.",
+  premiumBroadcaster:'Unable to find an active AzubuApiBundle:User the role of broadcaster and packege GOLD object identified by "%s".'
+};
+exports.codes = {
+  authError:401,
+  socialServiceAccessDenied:403
 };

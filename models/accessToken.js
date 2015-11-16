@@ -5,7 +5,7 @@ var mongoose = require('mongoose'),
     // AccessToken
     AccessToken = new Schema({
         userId: {
-            type: String
+            type: Number
         },
         client: {},
         token: {
@@ -20,6 +20,7 @@ var mongoose = require('mongoose'),
     
     AccessToken.pre('save', function(next){
       this.expiresAt = +(+new Date()/1000 + config.get('security:tokenLife')).toFixed();
+      this.userId = +this.userId || null;
       next();
     });
 

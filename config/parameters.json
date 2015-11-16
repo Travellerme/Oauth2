@@ -1,21 +1,35 @@
 {
-  "default":{
-      "client":{
-          "name":"web api v1",
-          "clientId":"1_j9234hci67ro72hf28o04sckcww44w0gsw804wco0kkgwkcoog40",
-          "clientSecret":"9jom8v3hkj32hj2ss4k4s8cwgw0cwk4gk4og8cg8ws8owg8c0c"
-      },
-      "api": {
-        "version" : "v1"
-       }
-  },
-  "session": {
-    "secret": ":LOnjsdkjfy",
-    "key": "sid",
-    "cookie": {
-      "path": "/",
-      "httpOnly": true,
-      "maxAge": null
+  "social_services":{
+    "available":"[\"facebook\"]",
+    "configuration":{
+        "facebook":{
+            "appId": "243243115835911",
+            "secret": "34d578598aedacf88d6e8a9e81c28e0c",
+            "oauth": "https://www.facebook.com/dialog/oauth",
+            "graph": "https://graph.facebook.com"
+        }
     }
-  }
+                
+  },
+  "allowedGrandTypes":["password","refresh_token","client_credentials","http://localhost.com/login/premium-broadcaster","http://localhost.com/login/admin","http://localhost.com","http://localhost.com/userId"],
+  "media_service":{
+    "image":{
+        "web_path":"/images/",
+        "default_image":{
+            "path":"default",
+            "image":{
+                "profile_photo_small": "profile-photo-small.jpg"
+            }
+        },
+        "dir":{
+            "user_profile":"userprofile"
+        }
+        
+    },
+    "media_domain":"http://azubulocal.com"
+  },
+  "auth_hash_key": "jHtmYju5GGGBdAHz",
+  "auth_cookie_domain":"azubulocal.com",
+  "cookie_private_data_name": "Datass",
+  "cookie_private_data_expire": 2505600
 }

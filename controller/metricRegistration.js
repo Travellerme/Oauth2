@@ -1,25 +1,24 @@
 var AuthError = require('../error').AuthError,
   errorMessages = require('../error').messages,
   async = require('async'),
-  requestIp = require('request-ip'),
-  ipaddr = require('ipaddr.js'),
-  _ = require('underscore'),
   UAParser = require('ua-parser'),
   metricService = require('../services/Metric/metricService'),
   lib = '../lib/',
   config = require('../config/config.js'),
-  log = require(lib + 'log')(module),
+  log = require(lib + 'log')(module,'main'),
   db = require(lib + 'db/mongoose'),
   MetricRegistrationConst = require('../models/metricRegistration').const,
   RefreshToken = require('../models/refreshToken'),
-  MetricRegistrationFields = require('../models/metricRegistration').fields;
+  MetricRegistrationFields = require('../models/metricRegistration').fields();
   
 module.exports  = {
   writeMetricRegistration:function(req,res,next){
+    var clientId = (!!req.oauth && !!req.oauth.bearerToken && !!req.oauth.bearerToken.clientMongoId) 
+      ? req.oauth.bearerToken.clientMongoId : null;
     MetricRegistrationFields.oauthClient = {
-      "$ref":"client",
-      "$id":req.authInfo.clientId ,
-      "$db":config.get('mongoose:db') 
+      "$db":config.get('mongoose:db'),
+      "$id":clientId,
+      "$ref":"client"
     }
     
     if(!!req.body.userBrowser){
@@ -32,7 +31,9 @@ module.exports  = {
     
       
     MetricRegistrationFields.type = MetricRegistrationConst.TYPE_PREREGISTRATION;
-    MetricRegistrationFields.fromBy = MetricRegistrationConst.FROM_BY_AZUBU;
+    MetricRegistrationFields.fromBy = !!req.body.fromBy ? (+req.body.fromBy) : MetricRegistrationConst.FROM_BY_AZUBU;
+    MetricRegistrationFields.socialServiceType = !!req.body.socialServiceType ? (+req.body.socialServiceType) : null;
+    
     MetricRegistrationFields.status = MetricRegistrationConst.STATUS_FAIL;
     MetricRegistrationFields.description = req.body.description || null;
     MetricRegistrationFields.httpRemoteAddr = req.body.userIp || null;
@@ -42,6 +43,8 @@ module.exports  = {
     }
     
     MetricRegistrationFields.userId = req.body.userId || null;
+    MetricRegistrationFields.username = req.body.username || null;
+    MetricRegistrationFields.email = req.body.email || null;
 
     metricService.writeMetricRegistration(MetricRegistrationFields)
       .then(function(){

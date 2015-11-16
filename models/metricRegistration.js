@@ -4,7 +4,7 @@ var mongoose = require('mongoose'),
 
     fields = {
         userId: {
-            type: String
+            type: Number
         },
         oauthClient: {},
         httpUserAgent: {},
@@ -19,6 +19,12 @@ var mongoose = require('mongoose'),
         },
         socialServiceType:{
             type: Number,
+        },
+        email:{
+            type: String,
+        },
+        username:{
+            type: String,
         },
         httpRemoteAddr:{
             type: String,
@@ -57,7 +63,10 @@ MetricRegistration.virtual('userOs')
 
 
 MetricRegistration.pre('save', function(next){
-  this.created = Date.now();
+  if(!this.created){
+    this.created = Date.now();
+  }
+  this.userId = +this.userId || null;
   next();
 });
 
@@ -71,9 +80,9 @@ exports.const = {
     STATUS_FAIL : 0,
     STATUS_SUCCESS : 1
 };
-exports.fields = (function(){
+exports.fields = function(){
   return Object.keys(fields).reduce(function(obj, k) {
     obj[k] = null;
     return obj;
   }, {});
-})()
+};

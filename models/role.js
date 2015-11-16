@@ -1,0 +1,4 @@
+exports.const = {
+   ROLE_BROADCASTER : "ROLE_BROADCASTER",
+   ROLE_ADMIN : "ROLE_ADMIN"
+};

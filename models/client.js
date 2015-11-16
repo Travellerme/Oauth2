@@ -12,6 +12,8 @@ var mongoose = require('mongoose'),
 			unique: true,
 			required: true
 		},
+        redirectUris: [],
+        allowedGrantTypes: [],
 		secret: {
 			type: String,
 			required: true

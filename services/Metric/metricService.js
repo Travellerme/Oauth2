@@ -6,7 +6,7 @@ var MetricLogin = require('../../models/metricLogin').MetricLogin,
   async = require('async'),
   Q = require('q'),
   HttpError = require('../../error').HttpError,
-  log = require('../../lib/log')(module);
+  log = require('../../lib/log')(module,'main');
 
 var metricPrivate = {
   getHttpUserAgentByDescription:function(hash,callback){
@@ -21,7 +21,7 @@ var metricPrivate = {
       });
 
     }else{
-      callback(null);
+      callback(null,null,null);
     }
   },
   createUserAgent:function(data,callback){
@@ -38,7 +38,8 @@ var metricPrivate = {
         metricPrivate.getHttpUserAgentByDescription(hash,callback);
       },
       function(hash, agent, callback) {
-        if (!agent) { 
+        if (!agent && !!hash) {
+          
           metricPrivate.createUserAgent({
             hash:hash,
             userOs:metricModel.userOs,
@@ -54,14 +55,13 @@ var metricPrivate = {
     ], function (err, agent) {
       if(err){  
         log.error(err); 
-        metricModel.httpUserAgent = null;
-      }else{
-        metricModel.httpUserAgent = {
-            "$ref":"userAgent",
-            "$id":agent._id ,
-            "$db":config.get('mongoose:db') 
-        };
       }
+      metricModel.httpUserAgent = (!!agent && !!agent._id) ? 
+        metricModel.httpUserAgent = {
+            "$db":config.get('mongoose:db'),
+            "$id":agent._id,
+            "$ref":"userAgent"
+        } : null;
 
       metricModel.save(function(err){
         if(err){ 

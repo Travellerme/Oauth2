@@ -1,20 +1,23 @@
 var faker = require('faker'),
   lib = './lib/',
-  log = require(lib + 'log')(module),
+  log = require(lib + 'log')(module,'scripts'),
   db = require(lib + 'db/mongoose'),
-  config = require('./config/parameters.js'),
+  parameters = require('./config/parameters.js'),
   Client = require('./models/client'),
   AccessToken = require('./models/accessToken'),
   AuthCode = require('./models/authorizationCodes'),
   RefreshToken = require('./models/refreshToken');
   MetricLogin = require('./models/metricLogin').MetricLogin,
+  MetricRegistration = require('./models/metricRegistration').MetricRegistration,
   UserAgent = require('./models/userAgent');
 
 Client.remove({}, function(err) {
     var client = new Client({ 
-        name: config.get("default:client:name"), 
-        randomId: config.get("default:client:clientId"), 
-        secret: config.get("default:client:clientSecret") 
+        name: parameters.get("default:client:name"), 
+        randomId: parameters.get("default:client:clientId"), 
+        secret: parameters.get("default:client:clientSecret"), 
+        redirectUris: parameters.get("default:client:redirectUris"), 
+        allowedGrantTypes: parameters.get("default:client:allowedGrantTypes") 
     });
     
     client.save(function(err, client) {
@@ -47,6 +50,12 @@ AuthCode.remove({}, function (err) {
 });
 
 MetricLogin.remove({}, function (err) {
+    if (err) {
+        return log.error(err);
+    }
+});
+
+MetricRegistration.remove({}, function (err) {
     if (err) {
         return log.error(err);
     }
