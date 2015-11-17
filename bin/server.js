@@ -1,8 +1,9 @@
+var path = require('path');
+global.appRoot = path.resolve(__dirname + "/../");
 var debug = require('debug')('restapi'),
-  lib = './../lib/',
-  config = require('../config/config.js'),
-  log = require(lib + 'log')(module,'main'),
-  app = require(lib + 'app'),
+  config = require(appRoot + '/config/config.js'),
+  log = require(appRoot + '/lib/log')(module,'main'),
+  app = require(appRoot + '/lib/app'),
   fs = require('fs'),
   async = require('async'),
   stats = null,

@@ -1,11 +1,11 @@
-var errorMessages = require('../error').messages,
-  HttpError = require('../error').HttpError,
+var errorMessages = require(appRoot + '/error').messages,
+  HttpError = require(appRoot + '/error').HttpError,
   async = require('async'),
-  userService = require('../services/user'),
-  oauthService = require('../services/oauth/oauth'),
-  authService = require('../services/Auth/authService'),
-  config = require('../config/config'),
-  parameters = require('../config/parameters');
+  userService = require(appRoot + '/services/user'),
+  oauthService = require(appRoot + '/services/oauth/oauth'),
+  authService = require(appRoot + '/services/Auth/authService'),
+  config = require(appRoot + '/config/config'),
+  parameters = require(appRoot + '/config/parameters');
   
 var private = {
   getUserData : function(userId,expiresAt,clientMongoId,mainCallback){
@@ -59,7 +59,7 @@ module.exports  = {
         return next(err);
       }
       
-      var userInfo = require('../resources/serializer')("User")
+      var userInfo = require(appRoot + '/resources/serializer')("User")
         .setSerializeNull(false)
         .setGroups(["get_auth_user_info"])
         .serialize(result);

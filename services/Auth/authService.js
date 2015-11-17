@@ -1,5 +1,5 @@
-var config = require('../../config/config'),
-  parameters = require('../../config/parameters');
+var config = require(appRoot + '/config/config'),
+  parameters = require(appRoot + '/config/parameters');
 
 var  private = {
   encrypt:function(value){

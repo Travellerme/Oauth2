@@ -1,5 +1,5 @@
 var validUrl = require('valid-url'),
-  imagePathService = require('../services/Media/imagePathService'),
+  imagePathService = require(appRoot + '/services/Media/imagePathService'),
   private = {
     defaultUrlPhotoSmall : null,
     imgUrlPath : null,

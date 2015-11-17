@@ -1,18 +1,19 @@
-var lib = '../lib/',
-  async = require('async'),
+var path = require('path');
+global.appRoot = path.resolve(__dirname + "/../");
+var async = require('async'),
   Cursor = require('pg-cursor'),
   pg = require('pg'),
-  log = require(lib + 'log')(module,'scripts'),
-  db = require(lib + 'db/mongoose'),
-  pgQuery = require(lib + 'db/pg'),
+  log = require(appRoot + '/lib/log')(module,'scripts'),
+  db = require(appRoot + '/lib/db/mongoose'),
+  pgQuery = require(appRoot + '/lib/db/pg'),
   util = require('util'),
-  parameters = require('../config/parameters'),
-  config = require('../config/config'),
+  parameters = require(appRoot + '/config/parameters'),
+  config = require(appRoot + '/config/config'),
   mongoose = require('mongoose'),
   args = process.argv.slice(2),
-  Client = require('../models/client'),
-  UserAgent = require('../models/userAgent'),
-  MetricRegistration = require('../models/metricRegistration').MetricRegistration;
+  Client = require(appRoot + '/models/client'),
+  UserAgent = require(appRoot + '/models/userAgent'),
+  MetricRegistration = require(appRoot + '/models/metricRegistration').MetricRegistration;
 
 
 var findClients = function(callback){

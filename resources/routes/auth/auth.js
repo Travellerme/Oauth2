@@ -6,7 +6,7 @@ function getRoutes(app){
      
   router.get('/user/info',
     app.oauth.authorise(),
-    require('../../../controller/auth').userInfo);
+    require(appRoot + '/controller/auth').userInfo);
 
   
   return router;

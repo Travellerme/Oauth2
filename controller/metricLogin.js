@@ -1,20 +1,19 @@
-var errorMessages = require('../error').messages,
+var errorMessages = require(appRoot + '/error').messages,
   OAuth2Error = require('oauth2-server/lib/error'),
   async = require('async'),
   ipaddr = require('ipaddr.js'),
   _ = require('underscore'),
   UAParser = require('ua-parser'),
-  metricService = require('../services/Metric/metricService'),
-  lib = '../lib/',
-  config = require('../config/config.js'),
-  log = require(lib + 'log')(module,'main'),
-  db = require(lib + 'db/mongoose'),
-  MetricLoginConst = require('../models/metricLogin').const,
-  RefreshToken = require('../models/refreshToken');
+  metricService = require(appRoot + '/services/Metric/metricService'),
+  config = require(appRoot + '/config/config.js'),
+  log = require(appRoot + '/lib/log')(module,'main'),
+  db = require(appRoot + '/lib/db/mongoose'),
+  MetricLoginConst = require(appRoot + '/models/metricLogin').const,
+  RefreshToken = require(appRoot + '/models/refreshToken');
   
 var MetricLoginPrivate = {
   getUserData:function(metricLoginFields,req){
-    var clientIpFull = require(lib + 'requestIp').getClientIp(req),
+    var clientIpFull = require(appRoot + '/lib/requestIp').getClientIp(req),
     clientIpArr = clientIpFull.split(':'),
     clientIp = clientIpArr[clientIpArr.length-1];
 
@@ -46,7 +45,7 @@ var MetricLoginPrivate = {
   },
   writeMetricLogin:function(err,req,res){
 
-    metricLoginFields = this.getUserData(require('../models/metricLogin').fields(),req);
+    metricLoginFields = this.getUserData(require(appRoot + '/models/metricLogin').fields(),req);
       
     
     metricLoginFields.oauthClient = (!!req.oauth && !!req.oauth.client && !!req.oauth.client.clientMongoId) 

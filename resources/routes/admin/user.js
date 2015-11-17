@@ -10,12 +10,12 @@ function getRoutes(app){
       req.leaveMetric = true;
       next();
     },
-    require('../../../controller/oauth2').generateUserIdGrandType,  
-    require('../../../middleware/checkParams'), 
-    require('../../../lib/auth/oauth2server').setResponse,
+    require(appRoot + '/controller/oauth2').generateUserIdGrandType,  
+    require(appRoot + '/middleware/checkParams'), 
+    require(appRoot + '/lib/auth/oauth2server').setResponse,
     app.oauth.grant(),
-    require('../../../controller/metricLogin').writeFailMetricLogin,  
-    require('../../../controller/metricLogin').writeSuccessMetricLogin);
+    require(appRoot + '/controller/metricLogin').writeFailMetricLogin,  
+    require(appRoot + '/controller/metricLogin').writeSuccessMetricLogin);
 
   
   return router;

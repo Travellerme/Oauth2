@@ -1,8 +1,8 @@
-var HttpError = require('../error').HttpError,
-    AuthError = require('../error').AuthError,
-    errorMessages = require('../error').messages,
-    errorCodes = require('../error').codes,
-    log = require('../lib/log')(module,'main'),
+var HttpError = require(appRoot + '/error').HttpError,
+    AuthError = require(appRoot + '/error').AuthError,
+    errorMessages = require(appRoot + '/error').messages,
+    errorCodes = require(appRoot + '/error').codes,
+    log = require(appRoot + '/lib/log')(module,'main'),
     OAuth2Error = require('oauth2-server/lib/error');
 
 module.exports = function(err, req, res, next) {

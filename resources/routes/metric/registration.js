@@ -5,7 +5,7 @@ var express = require('express'),
 function getRoutes(app){
   
   router.post('/',app.oauth.authorise(),
-    require('../../../controller/metricRegistration').writeMetricRegistration);
+    require(appRoot + '/controller/metricRegistration').writeMetricRegistration);
   
   return router;
 }

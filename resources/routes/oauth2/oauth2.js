@@ -4,11 +4,11 @@ var express = require('express'),
 
 function getRoutes(app){
   
-  router.use('/v2/token',require('../../../middleware/checkParams'), 
-    require('../../../lib/auth/oauth2server').setResponse,
+  router.use('/v2/token',require(appRoot + '/middleware/checkParams'), 
+    require(appRoot + '/lib/auth/oauth2server').setResponse,
     app.oauth.grant(),
-    require('../../../controller/metricLogin').writeFailMetricLogin,  
-    require('../../../controller/metricLogin').writeSuccessMetricLogin);
+    require(appRoot + '/controller/metricLogin').writeFailMetricLogin,  
+    require(appRoot + '/controller/metricLogin').writeSuccessMetricLogin);
 
   
   return router;

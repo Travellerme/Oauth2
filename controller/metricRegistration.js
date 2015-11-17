@@ -1,15 +1,14 @@
-var AuthError = require('../error').AuthError,
-  errorMessages = require('../error').messages,
+var AuthError = require(appRoot + '/error').AuthError,
+  errorMessages = require(appRoot + '/error').messages,
   async = require('async'),
   UAParser = require('ua-parser'),
-  metricService = require('../services/Metric/metricService'),
-  lib = '../lib/',
-  config = require('../config/config.js'),
-  log = require(lib + 'log')(module,'main'),
-  db = require(lib + 'db/mongoose'),
-  MetricRegistrationConst = require('../models/metricRegistration').const,
-  RefreshToken = require('../models/refreshToken'),
-  MetricRegistrationFields = require('../models/metricRegistration').fields();
+  metricService = require(appRoot + '/services/Metric/metricService'),
+  config = require(appRoot + '/config/config.js'),
+  log = require(appRoot + '/lib/log')(module,'main'),
+  db = require(appRoot + '/lib/db/mongoose'),
+  MetricRegistrationConst = require(appRoot + '/models/metricRegistration').const,
+  RefreshToken = require(appRoot + '/models/refreshToken'),
+  MetricRegistrationFields = require(appRoot + '/models/metricRegistration').fields();
   
 module.exports  = {
   writeMetricRegistration:function(req,res,next){

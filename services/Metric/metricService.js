@@ -1,12 +1,12 @@
-var MetricLogin = require('../../models/metricLogin').MetricLogin,
-  MetricRegistration = require('../../models/metricRegistration').MetricRegistration,
-  UserAgent = require('../../models/userAgent'),
-  config = require('../../config/config.js'),
+var MetricLogin = require(appRoot + '/models/metricLogin').MetricLogin,
+  MetricRegistration = require(appRoot + '/models/metricRegistration').MetricRegistration,
+  UserAgent = require(appRoot + '/models/userAgent'),
+  config = require(appRoot + '/config/config.js'),
   crypto = require('crypto'),
   async = require('async'),
   Q = require('q'),
-  HttpError = require('../../error').HttpError,
-  log = require('../../lib/log')(module,'main');
+  HttpError = require(appRoot + '/error').HttpError,
+  log = require(appRoot + '/lib/log')(module,'main');
 
 var metricPrivate = {
   getHttpUserAgentByDescription:function(hash,callback){

@@ -1,14 +1,14 @@
-var AccessToken = require('../../models/accessToken'),
-  RefreshToken = require('../../models/refreshToken'),
-  AuthError = require('../../error').AuthError,
-  errorMessages = require('../../error').messages,
-  userService = require('../user'),
+var AccessToken = require(appRoot + '/models/accessToken'),
+  RefreshToken = require(appRoot + '/models/refreshToken'),
+  AuthError = require(appRoot + '/error').AuthError,
+  errorMessages = require(appRoot + '/error').messages,
+  userService = require(appRoot + '/services/user'),
   OAuth2 = require('oauth').OAuth2,
   crypto = require('crypto'),
   async = require('async'),
-  config = require('../../config/config'),
-  parameters = require('../../config/parameters'),
-  log = require('../../lib/log')(module,'main');
+  config = require(appRoot + '/config/config'),
+  parameters = require(appRoot + '/config/parameters'),
+  log = require(appRoot + '/lib/log')(module,'main');
 
 var private = {
   // Generic error handler

@@ -1,6 +1,6 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
-    config = require('../config/config.js'),
+    config = require(appRoot + '/config/config.js'),
 
     fields = {
         userId: {

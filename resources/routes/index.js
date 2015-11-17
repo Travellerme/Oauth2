@@ -1,7 +1,6 @@
-var HttpError = require('../../error').HttpError,
-  AuthError = require('../../error').AuthError,
-  errorMessages = require('../../error').messages,
-  passport = require('passport');
+var HttpError = require(appRoot + '/error').HttpError,
+  AuthError = require(appRoot + '/error').AuthError,
+  errorMessages = require(appRoot + '/error').messages;
   
 module.exports = function(app) { 
   

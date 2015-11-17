@@ -1,7 +1,7 @@
-var errorMessages = require('../error').messages,
-  HttpError = require('../error').HttpError,
+var errorMessages = require(appRoot + '/error').messages,
+  HttpError = require(appRoot + '/error').HttpError,
   async = require('async'),
-  parametrs = require('../config/parameters');
+  parametrs = require(appRoot + '/config/parameters');
   
 var private = {
  

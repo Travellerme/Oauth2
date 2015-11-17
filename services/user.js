@@ -1,13 +1,13 @@
-var AccessToken = require('../models/accessToken'),
-  RefreshToken = require('../models/refreshToken'),
-  User = require('../models/user').const,
-  Role = require('../models/role').const,
-  UserProfile = require('../models/userProfile'),
+var AccessToken = require(appRoot + '/models/accessToken'),
+  RefreshToken = require(appRoot + '/models/refreshToken'),
+  User = require(appRoot + '/models/user').const,
+  Role = require(appRoot + '/models/role').const,
+  UserProfile = require(appRoot + '/models/userProfile'),
   crypto = require('crypto'),
-  config = require('../config/config.js'),
-  pgQuery = require('../lib/db/pg'),
+  config = require(appRoot + '/config/config.js'),
+  pgQuery = require(appRoot + '/lib/db/pg'),
   dateFormat = require('dateformat'),
-  log = require('../lib/log')(module,'main');
+  log = require(appRoot + '/lib/log')(module,'main');
 
 var private = {
   

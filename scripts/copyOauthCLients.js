@@ -1,15 +1,16 @@
-var lib = '../lib/',
-  async = require('async'),
+var path = require('path');
+global.appRoot = path.resolve(__dirname + "/../");
+var async = require('async'),
   pg = require('pg'),
   phpUnserialize = require('phpunserialize');
-  log = require(lib + 'log')(module,'scripts'),
-  db = require(lib + 'db/mongoose'),
-  pgQuery = require(lib + 'db/pg'),
-  parameters = require('../config/parameters'),
-  config = require('../config/config'),
+  log = require(appRoot + '/lib/log')(module,'scripts'),
+  db = require(appRoot + '/lib/db/mongoose'),
+  pgQuery = require(appRoot + '/lib/db/pg'),
+  parameters = require(appRoot + '/config/parameters'),
+  config = require(appRoot + '/config/config'),
   mongoose = require('mongoose'),
   args = process.argv.slice(2),
-  Client = require('../models/client');
+  Client = require(appRoot + '/models/client');
 
 
 var findClients = function(callback){
