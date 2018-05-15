@@ -3,7 +3,7 @@ Oauth2 server with NodeJS and Postgres
 For running auth server you must create postgres table "user" with fields "id","salt","password"
 Rules for salt and passwords must be equals rules in encodePassword method in services/user.js
 
-1. azubu_dump.sql contains the necessary dump
+1. *_dump.sql contains the necessary dump
 
 2. All settings you can find in config/config.json and config/parameters.json
 
